@@ -8,26 +8,139 @@
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;background:linear-gradient(180deg,#f8fafc,#eef2f7);color:#111827;user-select:none}
-video{border:none;width:100%;height:100%;background:#000}
-body.popup-active .main-content > :not(.player-wrap){filter:blur(6px);pointer-events:none}
-.glass{background:rgba(255,255,255,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.45);box-shadow:0 12px 30px rgba(0,0,0,.08)}
-.top-bar{max-width:950px;margin:14px auto;padding:14px;text-align:center;font-weight:600;border-radius:18px}
-.player-wrap{max-width:950px;margin:0 auto;background:#000;border-radius:20px;overflow:hidden;box-shadow:0 14px 30px rgba(0,0,0,.15);aspect-ratio:16/9}
-.section{max-width:950px;margin:14px auto;padding:18px;border-radius:20px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.section h3{width:100%;text-align:center;margin:0 0 6px;font-size:16px;font-weight:600}
-.btn{background:rgba(255,255,255,.9);color:#FF6B6B;padding:12px 22px;border-radius:16px;font-weight:600;border:1px solid rgba(0,0,0,.08);cursor:pointer;text-decoration:none;box-shadow:0 6px 14px rgba(0,0,0,.08)}
-.btn.primary{background:#FF6B6B;color:#fff;border:none}
-.banner{max-width:950px;margin:20px auto;padding:18px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:20px;font-weight:600;border-radius:22px}
+
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+  background:linear-gradient(180deg,#f8fafc,#eef2f7);
+  color:#111827;
+  user-select:none;
+}
+video{border:none; width:100%; height:100%; outline:none; background:#000;}
+
+body.popup-active .main-content > :not(.player-wrap){
+  filter:blur(6px);
+  pointer-events:none;
+}
+
+.glass{
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.45);
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
+
+.top-bar{
+  max-width:950px;
+  margin:14px auto;
+  padding:14px;
+  text-align:center;
+  font-weight:600;
+  border-radius:18px;
+}
+
+.player-wrap{
+  max-width:950px;
+  margin:0 auto;
+  background:#000;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 14px 30px rgba(0,0,0,.15);
+  aspect-ratio: 16/9;
+}
+
+.section{
+  max-width:950px;
+  margin:14px auto;
+  padding:18px;
+  border-radius:20px;
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.section h3{
+  width:100%;
+  text-align:center;
+  margin:0 0 6px;
+  font-size:16px;
+  font-weight:600;
+}
+
+.btn{
+  background:rgba(255,255,255,.9);
+  color:#FF6B6B;
+  padding:12px 22px;
+  border-radius:16px;
+  font-weight:600;
+  border:1px solid rgba(0,0,0,.08);
+  cursor:pointer;
+  text-decoration:none;
+  box-shadow:0 6px 14px rgba(0,0,0,.08);
+}
+.btn.primary{
+  background:#FF6B6B;
+  color:#fff;
+  border:none;
+}
+
+.banner{
+  max-width:950px;
+  margin:20px auto;
+  padding:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  font-size:20px;
+  font-weight:600;
+  border-radius:22px;
+}
 .banner img{width:36px}
-.popup{position:fixed;inset:0;background:rgba(0,0,0,.35);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:999}
-.popup-box{background:rgba(255,255,255,.75);backdrop-filter:blur(18px);padding:28px 22px;border-radius:26px;text-align:center;max-width:340px;width:90%;border:1px solid rgba(255,255,255,.5);box-shadow:0 25px 50px rgba(0,0,0,.2);animation:pop .3s ease}
-@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.35);
+  backdrop-filter:blur(6px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+.popup-box{
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(18px);
+  padding:28px 22px;
+  border-radius:26px;
+  text-align:center;
+  max-width:340px;
+  width:90%;
+  border:1px solid rgba(255,255,255,.5);
+  box-shadow:0 25px 50px rgba(0,0,0,.2);
+  animation:pop .3s ease;
+}
+@keyframes pop{
+  from{transform:scale(.9);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
 .popup-box h2{margin:0 0 8px}
 .popup-box p{margin:0 0 18px;color:#6b7280}
-.popup-box a, .popup-box button{display:block;width:100%;margin-top:12px;padding:14px;border-radius:16px;border:none;font-weight:600;cursor:pointer;text-decoration:none}
-.popup-join{background:#FF6B6B;color:#fff}
-.popup-done{background:rgba(255,255,255,.9);color:#FF6B6B}
+.popup-box a,
+.popup-box button{
+  display:block;
+  width:100%;
+  margin-top:12px;
+  padding:14px;
+  border-radius:16px;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+  text-decoration:none;
+}
+.popup-join{ background:#FF6B6B; color:#fff; }
+.popup-done{ background:rgba(255,255,255,.9); color:#FF6B6B; }
 </style>
 </head>
 
@@ -44,27 +157,34 @@ body.popup-active .main-content > :not(.player-wrap){filter:blur(6px);pointer-ev
 
 <div class="main-content">
   <div class="top-bar glass">CricxCrate • TNT Sports 1</div>
+
   <div class="player-wrap">
     <video id="video" controls autoplay playsinline crossorigin="anonymous"></video>
   </div>
+
   <div class="section glass">
     <h3>⚡ Join Telegram For Live Updates</h3>
     <a class="btn primary" href="https://t.me/CricxCrate" target="_blank">Join Telegram</a>
     <a class="btn" href="https://t.me/CricxCratelinks" target="_blank">All Channels</a>
   </div>
+
   <div class="section glass">
     <h3>❤️ Share & Support</h3>
     <button class="btn primary" onclick="sharePage()">Share</button>
     <button class="btn" onclick="copyLink()">Copy Link</button>
   </div>
+
+  <a href="https://t.me/CricxCrate" target="_blank" style="text-decoration:none;color:inherit">
+    <div class="banner glass">
+      <img src="https://telegram.org/img/t_logo.png">
+      Join @CricxCrate
+    </div>
+  </a>
 </div>
 
 <script>
-// --- CORE STREAM FIX ---
-// Using a CORS Proxy to prevent the "Stuck/Not Working" issue after deployment
-const rawUri = 'https://live-pv-ta.amazon.fastly-edge.com/lhr-nitro/live/dash/enc/cllekigzzn/out/v1/bd3b0c314fff4bb1ab4693358f3cd2d3/cenc.mpd';
-const manifestUri = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(rawUri);
-
+// --- STABILITY FIX FOR STREAM ---
+const manifestUri = 'https://live-pv-ta.amazon.fastly-edge.com/lhr-nitro/live/dash/enc/cllekigzzn/out/v1/bd3b0c314fff4bb1ab4693358f3cd2d3/cenc.mpd';
 const clearKeys = {
     "294b5761cefc22d0c6312939e13d8278":"52148f1042d238849f0a7813f1da8a7b"
 };
@@ -73,41 +193,58 @@ async function initPlayer() {
   const video = document.getElementById('video');
   const player = new shaka.Player(video);
 
+  // Buffer settings to prevent sticking/freezing
   player.configure({
     drm: { clearKeys: clearKeys },
     streaming: {
-      bufferingGoal: 10,
+      bufferingGoal: 30, // Buffers 30 seconds ahead
       rebufferingGoal: 2,
-      lowLatencyMode: true
+      bufferBehind: 30,
+      ignoreTextStreamFailures: true
+    },
+    manifest: {
+      dash: { ignoreMinBufferTime: true }
     }
   });
 
-  // Auto-recovery if player gets stuck
-  player.addEventListener('error', (e) => {
-    if (e.detail.code === 3016 || e.detail.code === 3014) {
-      console.log("Stuck detected, recovering...");
-      player.load(manifestUri);
+  // Error handling for auto-resume
+  player.addEventListener('error', (event) => {
+    console.error('Error code', event.detail.code);
+    if (event.detail.code === 3016) { // Common "stuck" error
+       player.load(manifestUri); // Reload manifest
     }
   });
 
   try {
     await player.load(manifestUri);
   } catch (e) {
-    // If proxy fails, try direct as fallback
-    player.load(rawUri);
+    console.error('Load failed', e);
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   shaka.polyfill.installAll();
-  if (shaka.Player.isBrowserSupported()) { initPlayer(); }
+  if (shaka.Player.isBrowserSupported()) {
+    initPlayer();
+  }
 });
 
-// --- UI LOGIC ---
+// --- UI FUNCTIONS ---
 const popup = document.getElementById("popup");
-function copyLink(){ navigator.clipboard.writeText(location.href); alert("Link copied!"); }
-function sharePage(){ if(navigator.share){ navigator.share({title:"Live Cricket – CricxCrate", url:location.href}); } }
+
+function copyLink(){
+  navigator.clipboard.writeText(location.href);
+  alert("Link copied!");
+}
+
+function sharePage(){
+  if(navigator.share){
+    navigator.share({title:"Live Cricket – CricxCrate", url:location.href});
+  }
+}
+
 function closePopup(){
+  popup.style.transition = "opacity 0.3s";
   popup.style.opacity = "0";
   setTimeout(() => {
     popup.style.display = "none";
@@ -115,8 +252,12 @@ function closePopup(){
     sessionStorage.setItem("joined","yes");
   }, 300);
 }
-if(sessionStorage.getItem("joined") === "yes"){ popup.style.display = "none"; }
-else { document.body.classList.add("popup-active"); }
+
+if(sessionStorage.getItem("joined") !== "yes"){
+  document.body.classList.add("popup-active");
+}else{
+  popup.style.display = "none";
+}
 </script>
 
 </body>
